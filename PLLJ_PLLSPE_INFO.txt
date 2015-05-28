@@ -1,0 +1,5 @@
+PLL_Name	qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_6f42:sd1|pll7
+PLLJITTER	NA
+PLLSPEmax	84
+PLLSPEmin	-53
+

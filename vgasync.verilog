@@ -1,0 +1,69 @@
+module vgasync(input CLOCK_50, output [0:0] VGA_VS, output [0:0] VGA_HS, output [3:0] VGA_R, output [3:0] VGA_G, output [3:0] VGA_B);
+
+	wire CLOCK_500;
+	wire reset; assign reset = 1;
+
+	qsyssystem(reset, CLOCK_500, CLOCK_50);
+	vga_frame(CLOCK_500, VGA_VS[0:0], VGA_HS[0:0], VGA_R[3:0], VGA_G[3:0], VGA_B[3:0]);
+
+endmodule
+
+module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, output reg[3:0] VGA_R, output reg [3:0] VGA_G, output reg [3:0] VGA_B);
+
+	parameter clock_freq = 166924800; // Hz
+
+// http://tinyvga.com/vga-timing/1280x800@60Hz
+	parameter refresh_rate = 60; // Hz
+	parameter line_per_frame = 828; // Lines per Frame
+	parameter pixel_per_line = 1680; // Pixels per Line
+//	parameter pixel_rate = 166964286;// 166924800 refresh_rate * frame * line; // Hz
+	parameter clock_per_pixel = 2; // round(clock_freq/pixel_rate);
+	parameter pixel_per_frame = 1391040; //frame * line; // Pixels
+
+	reg [23:0] clock_num = 0;
+	reg [0:0] bw = 0;
+
+	initial begin
+		VGA_VS[0] = 1;
+	end
+
+	always @(posedge clk) begin	
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= 800 + 1
+		   && clock_num/ clock_per_pixel/ pixel_per_line <  800 + 1 + 3) // VSync Pulse
+			begin
+				if (clock_num/ clock_per_pixel/ pixel_per_line == 800 + 1)
+					bw[0] = ~bw[0];
+				VGA_VS[0] <= 1;
+			end
+		else begin
+			VGA_VS[0] <= 0; // possible wrong pulse polarity
+		end
+		
+		if (  clock_num/ clock_per_pixel% pixel_per_line >= 1280+64
+			&& clock_num/ clock_per_pixel% pixel_per_line <  1280+64+136
+			) // HSync Pulse
+			VGA_HS[0] <= 0;
+		else 
+			VGA_HS[0] <= 1; // possible wrong pulse polarity
+				
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= 0   
+			&& clock_num/ clock_per_pixel/ pixel_per_line <  800
+			&& clock_num/ clock_per_pixel% pixel_per_line >= 0
+			&& clock_num/ clock_per_pixel% pixel_per_line <  1280
+			) begin// VH Visible area
+			VGA_R[3:0] = 4'b1111;
+			VGA_G[3:0] = 4'b1111; 
+			VGA_B[3:0] = 4'b1111;
+		end else begin
+			VGA_R[3:0] <= 0;
+			VGA_G[3:0] <= 0; 
+			VGA_B[3:0] <= 0;
+		end
+
+		if (clock_num / clock_per_pixel == pixel_per_frame) begin // reset clock at end of frame
+			clock_num = 0;
+		end else
+			clock_num = clock_num + 1;
+	end
+	
+endmodule

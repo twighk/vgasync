@@ -1,0 +1,8 @@
+	component qsyssystem is
+		port (
+			reset_reset_n : in  std_logic := 'X'; -- reset_n
+			clock_500_clk : out std_logic;        -- clk
+			clk_in_clk    : in  std_logic := 'X'  -- clk
+		);
+	end component qsyssystem;
+
