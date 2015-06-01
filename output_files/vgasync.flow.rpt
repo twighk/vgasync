@@ -1,5 +1,5 @@
 Flow report for vgasync
-Mon Jun  1 17:30:10 2015
+Mon Jun  1 18:37:06 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,17 +40,17 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Jun  1 17:30:10 2015           ;
+; Flow Status                        ; Successful - Mon Jun  1 18:37:06 2015           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; vgasync                                         ;
 ; Top-level Entity Name              ; vgasync                                         ;
 ; Family                             ; Cyclone III                                     ;
 ; Device                             ; EP3C16F484C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1,018 / 15,408 ( 7 % )                          ;
-;     Total combinational functions  ; 1,016 / 15,408 ( 7 % )                          ;
-;     Dedicated logic registers      ; 24 / 15,408 ( < 1 % )                           ;
-; Total registers                    ; 38                                              ;
+; Total logic elements               ; 851 / 15,408 ( 6 % )                            ;
+;     Total combinational functions  ; 850 / 15,408 ( 6 % )                            ;
+;     Dedicated logic registers      ; 25 / 15,408 ( < 1 % )                           ;
+; Total registers                    ; 39                                              ;
 ; Total pins                         ; 15 / 347 ( 4 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 516,096 ( 0 % )                             ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/01/2015 17:28:53 ;
+; Start date & time ; 06/01/2015 18:36:24 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; vgasync             ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 0.143317613304324                     ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 0.143318018423029                     ; --            ; --          ; --             ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; On                                    ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)             ; <None>        ; --          ; --             ;
@@ -100,12 +100,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 583 MB              ; 00:00:19                           ;
-; Fitter                    ; 00:00:13     ; 1.0                     ; 748 MB              ; 00:00:13                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 539 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 576 MB              ; 00:00:04                           ;
+; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 570 MB              ; 00:00:19                           ;
+; Fitter                    ; 00:00:12     ; 1.0                     ; 753 MB              ; 00:00:12                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 531 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 567 MB              ; 00:00:04                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 780 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:33     ; --                      ; --                  ; 00:00:39                           ;
+; Total                     ; 00:00:32     ; --                      ; --                  ; 00:00:38                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
