@@ -1,5 +1,5 @@
 Analysis & Synthesis report for vgasync
-Mon Jun  1 15:49:18 2015
+Mon Jun  1 17:29:06 2015
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -16,17 +16,17 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   8. Registers Removed During Synthesis
   9. Removed Registers Triggering Further Register Optimizations
  10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Source assignments for qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0
- 13. Source assignments for qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_stdsync_sv6:stdsync2|qsyssystem_altpll_0_dffpipe_l2c:dffpipe3
- 14. Source assignments for qsyssystem:comb_4|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 15. Parameter Settings for User Entity Instance: qsyssystem:comb_4|altera_reset_controller:rst_controller
- 16. Parameter Settings for User Entity Instance: qsyssystem:comb_4|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
- 17. Parameter Settings for User Entity Instance: vga_frame:comb_5
- 18. Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Div0
- 19. Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Mod0
+ 11. Source assignments for qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0
+ 12. Source assignments for qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_stdsync_sv6:stdsync2|qsyssystem_altpll_0_dffpipe_l2c:dffpipe3
+ 13. Source assignments for qsyssystem:comb_4|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 14. Parameter Settings for User Entity Instance: qsyssystem:comb_4|altera_reset_controller:rst_controller
+ 15. Parameter Settings for User Entity Instance: qsyssystem:comb_4|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1
+ 16. Parameter Settings for User Entity Instance: vga_frame:comb_5
+ 17. Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Div0
+ 18. Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Mod0
+ 19. Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Mod1
  20. Port Connectivity Checks: "qsyssystem:comb_4|altera_reset_controller:rst_controller"
- 21. Port Connectivity Checks: "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1"
+ 21. Port Connectivity Checks: "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1"
  22. Port Connectivity Checks: "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0"
  23. Port Connectivity Checks: "qsyssystem:comb_4"
  24. Elapsed Time Per Partition
@@ -56,13 +56,13 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jun  1 15:49:18 2015           ;
+; Analysis & Synthesis Status        ; Successful - Mon Jun  1 17:29:06 2015           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; vgasync                                         ;
 ; Top-level Entity Name              ; vgasync                                         ;
 ; Family                             ; Cyclone III                                     ;
-; Total logic elements               ; 929                                             ;
-;     Total combinational functions  ; 918                                             ;
+; Total logic elements               ; 1,025                                           ;
+;     Total combinational functions  ; 1,016                                           ;
 ;     Dedicated logic registers      ; 38                                              ;
 ; Total registers                    ; 38                                              ;
 ; Total pins                         ; 15                                              ;
@@ -191,6 +191,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; db/add_sub_unc.tdf                                          ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/add_sub_unc.tdf                                          ;         ;
 ; db/add_sub_vnc.tdf                                          ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/add_sub_vnc.tdf                                          ;         ;
 ; db/lpm_divide_9bm.tdf                                       ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/lpm_divide_9bm.tdf                                       ;         ;
+; db/lpm_divide_l9m.tdf                                       ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/lpm_divide_l9m.tdf                                       ;         ;
+; db/sign_div_unsign_jlh.tdf                                  ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/sign_div_unsign_jlh.tdf                                  ;         ;
+; db/alt_u_div_h5f.tdf                                        ; yes             ; Auto-Generated Megafunction  ; /home/twig/Scratch/vgasync/db/alt_u_div_h5f.tdf                                        ;         ;
 +-------------------------------------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------+---------+
 
 
@@ -199,17 +202,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                               ;
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 929                                                                                                 ;
+; Estimated Total logic elements              ; 1,025                                                                                               ;
 ;                                             ;                                                                                                     ;
-; Total combinational functions               ; 918                                                                                                 ;
+; Total combinational functions               ; 1016                                                                                                ;
 ; Logic element usage by number of LUT inputs ;                                                                                                     ;
-;     -- 4 input functions                    ; 257                                                                                                 ;
-;     -- 3 input functions                    ; 244                                                                                                 ;
-;     -- <=2 input functions                  ; 417                                                                                                 ;
+;     -- 4 input functions                    ; 274                                                                                                 ;
+;     -- 3 input functions                    ; 279                                                                                                 ;
+;     -- <=2 input functions                  ; 463                                                                                                 ;
 ;                                             ;                                                                                                     ;
 ; Logic elements by mode                      ;                                                                                                     ;
-;     -- normal mode                          ; 645                                                                                                 ;
-;     -- arithmetic mode                      ; 273                                                                                                 ;
+;     -- normal mode                          ; 716                                                                                                 ;
+;     -- arithmetic mode                      ; 300                                                                                                 ;
 ;                                             ;                                                                                                     ;
 ; Total registers                             ; 38                                                                                                  ;
 ;     -- Dedicated logic registers            ; 38                                                                                                  ;
@@ -220,10 +223,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total PLLs                                  ; 1                                                                                                   ;
 ;     -- PLLs                                 ; 1                                                                                                   ;
 ;                                             ;                                                                                                     ;
-; Maximum fan-out node                        ; qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1|wire_pll7_clk[0] ;
+; Maximum fan-out node                        ; qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1|wire_pll7_clk[0] ;
 ; Maximum fan-out                             ; 39                                                                                                  ;
-; Total fan-out                               ; 2644                                                                                                ;
-; Average fan-out                             ; 2.68                                                                                                ;
+; Total fan-out                               ; 2891                                                                                                ;
+; Average fan-out                             ; 2.66                                                                                                ;
 +---------------------------------------------+-----------------------------------------------------------------------------------------------------+
 
 
@@ -232,19 +235,23 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                       ; Library Name ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
-; |vgasync                                       ; 918 (0)           ; 38 (0)       ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |vgasync                                                                                                                  ; work         ;
+; |vgasync                                       ; 1016 (0)          ; 38 (0)       ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |vgasync                                                                                                                  ; work         ;
 ;    |qsyssystem:comb_4|                         ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|qsyssystem:comb_4                                                                                                ; work         ;
 ;       |qsyssystem_altpll_0:altpll_0|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0                                                                   ; work         ;
-;          |qsyssystem_altpll_0_altpll_h542:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1                               ; work         ;
-;    |vga_frame:comb_5|                          ; 918 (63)          ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5                                                                                                 ; work         ;
+;          |qsyssystem_altpll_0_altpll_5q42:sd1| ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1                               ; work         ;
+;    |vga_frame:comb_5|                          ; 1016 (64)         ; 38 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5                                                                                                 ; work         ;
 ;       |lpm_divide:Div0|                        ; 442 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Div0                                                                                 ; work         ;
 ;          |lpm_divide_6jm:auto_generated|       ; 442 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Div0|lpm_divide_6jm:auto_generated                                                   ; work         ;
 ;             |sign_div_unsign_7nh:divider|      ; 442 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Div0|lpm_divide_6jm:auto_generated|sign_div_unsign_7nh:divider                       ; work         ;
 ;                |alt_u_div_p8f:divider|         ; 442 (442)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Div0|lpm_divide_6jm:auto_generated|sign_div_unsign_7nh:divider|alt_u_div_p8f:divider ; work         ;
-;       |lpm_divide:Mod0|                        ; 413 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0                                                                                 ; work         ;
-;          |lpm_divide_9bm:auto_generated|       ; 413 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated                                                   ; work         ;
-;             |sign_div_unsign_7nh:divider|      ; 413 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated|sign_div_unsign_7nh:divider                       ; work         ;
-;                |alt_u_div_p8f:divider|         ; 413 (413)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated|sign_div_unsign_7nh:divider|alt_u_div_p8f:divider ; work         ;
+;       |lpm_divide:Mod0|                        ; 436 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0                                                                                 ; work         ;
+;          |lpm_divide_9bm:auto_generated|       ; 436 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_7nh:divider|      ; 436 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated|sign_div_unsign_7nh:divider                       ; work         ;
+;                |alt_u_div_p8f:divider|         ; 436 (436)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod0|lpm_divide_9bm:auto_generated|sign_div_unsign_7nh:divider|alt_u_div_p8f:divider ; work         ;
+;       |lpm_divide:Mod1|                        ; 74 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod1                                                                                 ; work         ;
+;          |lpm_divide_l9m:auto_generated|       ; 74 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod1|lpm_divide_l9m:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_jlh:divider|      ; 74 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod1|lpm_divide_l9m:auto_generated|sign_div_unsign_jlh:divider                       ; work         ;
+;                |alt_u_div_h5f:divider|         ; 74 (74)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |vgasync|vga_frame:comb_5|lpm_divide:Mod1|lpm_divide_l9m:auto_generated|sign_div_unsign_jlh:divider|alt_u_div_h5f:divider ; work         ;
 +------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -285,16 +292,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; vga_frame:comb_5|VGA_VS[0]             ; 1       ;
-; Total number of inverted registers = 1 ;         ;
-+----------------------------------------+---------+
 
 
 +-----------------------------------------------------------------------+
@@ -421,6 +418,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: vga_frame:comb_5|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 11             ; Untyped                                 ;
+; LPM_WIDTHD             ; 2              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_l9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +--------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "qsyssystem:comb_4|altera_reset_controller:rst_controller" ;
 +------------+--------+----------+-----------------------------------------------------+
@@ -446,7 +466,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1"      ;
+; Port Connectivity Checks: "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1"      ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port      ; Type   ; Severity ; Details                                                                             ;
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
@@ -495,20 +515,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Jun  1 15:49:05 2015
+    Info: Processing started: Mon Jun  1 17:28:53 2015
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vgasync -c vgasync
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12248): Elaborating Qsys system entity "qsyssystem.qsys"
-Info (12250): 2015.06.01.15:49:07 Progress: Loading vgasync/qsyssystem.qsys
-Info (12250): 2015.06.01.15:49:08 Progress: Reading input file
-Info (12250): 2015.06.01.15:49:08 Progress: Adding clk_0 [clock_source 13.0]
-Info (12250): 2015.06.01.15:49:08 Progress: Parameterizing module clk_0
-Info (12250): 2015.06.01.15:49:08 Progress: Adding altpll_0 [altpll 13.0]
-Info (12250): 2015.06.01.15:49:09 Progress: Parameterizing module altpll_0
-Info (12250): 2015.06.01.15:49:09 Progress: Building connections
-Info (12250): 2015.06.01.15:49:09 Progress: Parameterizing connections
-Info (12250): 2015.06.01.15:49:09 Progress: Validating
-Info (12250): 2015.06.01.15:49:09 Progress: Done reading input file
+Info (12250): 2015.06.01.17:28:55 Progress: Loading vgasync/qsyssystem.qsys
+Info (12250): 2015.06.01.17:28:55 Progress: Reading input file
+Info (12250): 2015.06.01.17:28:55 Progress: Adding clk_0 [clock_source 13.0]
+Info (12250): 2015.06.01.17:28:56 Progress: Parameterizing module clk_0
+Info (12250): 2015.06.01.17:28:56 Progress: Adding altpll_0 [altpll 13.0]
+Info (12250): 2015.06.01.17:28:56 Progress: Parameterizing module altpll_0
+Info (12250): 2015.06.01.17:28:56 Progress: Building connections
+Info (12250): 2015.06.01.17:28:57 Progress: Parameterizing connections
+Info (12250): 2015.06.01.17:28:57 Progress: Validating
+Info (12250): 2015.06.01.17:28:57 Progress: Done reading input file
 Warning (12251): Qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
 Warning (12251): Qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
 Warning (12251): Qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
@@ -522,12 +542,12 @@ Info (12250): Reset_adaptation_transform: After transform: 3 modules, 4 connecti
 Info (12250): Merlin_mm_transform: After transform: 3 modules, 4 connections
 Info (12250): Altpll_0: "qsyssystem" instantiated altpll "altpll_0"
 Info (12250): Rst_controller: "qsyssystem" instantiated altera_reset_controller "rst_controller"
-Info (12250): Qsyssystem: Done qsyssystem" with 3 modules, 5 files, 24830 bytes
+Info (12250): Qsyssystem: Done qsyssystem" with 3 modules, 5 files, 24869 bytes
 Info (12249): Finished elaborating Qsys system entity "qsyssystem.qsys"
 Info (12021): Found 4 design units, including 4 entities, in source file qsyssystem/synthesis/submodules/qsyssystem_altpll_0.v
     Info (12023): Found entity 1: qsyssystem_altpll_0_dffpipe_l2c
     Info (12023): Found entity 2: qsyssystem_altpll_0_stdsync_sv6
-    Info (12023): Found entity 3: qsyssystem_altpll_0_altpll_h542
+    Info (12023): Found entity 3: qsyssystem_altpll_0_altpll_5q42
     Info (12023): Found entity 4: qsyssystem_altpll_0
 Info (12021): Found 1 design units, including 1 entities, in source file qsyssystem/synthesis/submodules/altera_reset_synchronizer.v
     Info (12023): Found entity 1: altera_reset_synchronizer
@@ -547,7 +567,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/ip/q
 Info (12021): Found 4 design units, including 4 entities, in source file db/ip/qsyssystem/submodules/qsyssystem_altpll_0.v
     Info (12023): Found entity 1: qsyssystem_altpll_0_dffpipe_l2c
     Info (12023): Found entity 2: qsyssystem_altpll_0_stdsync_sv6
-    Info (12023): Found entity 3: qsyssystem_altpll_0_altpll_h542
+    Info (12023): Found entity 3: qsyssystem_altpll_0_altpll_5q42
     Info (12023): Found entity 4: qsyssystem_altpll_0
 Critical Warning (10846): Verilog HDL Instantiation warning at vgasync.verilog(6): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at vgasync.verilog(7): instance has no name
@@ -556,18 +576,21 @@ Info (12128): Elaborating entity "qsyssystem" for hierarchy "qsyssystem:comb_4"
 Info (12128): Elaborating entity "qsyssystem_altpll_0" for hierarchy "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0"
 Info (12128): Elaborating entity "qsyssystem_altpll_0_stdsync_sv6" for hierarchy "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_stdsync_sv6:stdsync2"
 Info (12128): Elaborating entity "qsyssystem_altpll_0_dffpipe_l2c" for hierarchy "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_stdsync_sv6:stdsync2|qsyssystem_altpll_0_dffpipe_l2c:dffpipe3"
-Info (12128): Elaborating entity "qsyssystem_altpll_0_altpll_h542" for hierarchy "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1"
+Info (12128): Elaborating entity "qsyssystem_altpll_0_altpll_5q42" for hierarchy "qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1"
 Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "qsyssystem:comb_4|altera_reset_controller:rst_controller"
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "qsyssystem:comb_4|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1"
 Info (12128): Elaborating entity "vga_frame" for hierarchy "vga_frame:comb_5"
-Warning (10230): Verilog HDL assignment warning at vgasync.verilog(47): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at vgasync.verilog(51): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at vgasync.verilog(59): truncated value with size 32 to match size of target (1)
+Warning (10036): Verilog HDL or VHDL warning at vgasync.verilog(34): object "bw" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at vgasync.verilog(37): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at vgasync.verilog(45): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at vgasync.verilog(49): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at vgasync.verilog(58): truncated value with size 32 to match size of target (1)
 Warning (10230): Verilog HDL assignment warning at vgasync.verilog(61): truncated value with size 32 to match size of target (1)
-Warning (10230): Verilog HDL assignment warning at vgasync.verilog(83): truncated value with size 32 to match size of target (24)
-Info (278001): Inferred 2 megafunctions from design logic
+Warning (10230): Verilog HDL assignment warning at vgasync.verilog(87): truncated value with size 32 to match size of target (24)
+Info (278001): Inferred 3 megafunctions from design logic
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga_frame:comb_5|Div0"
     Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga_frame:comb_5|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vga_frame:comb_5|Mod1"
 Info (12130): Elaborated megafunction instantiation "vga_frame:comb_5|lpm_divide:Div0"
 Info (12133): Instantiated megafunction "vga_frame:comb_5|lpm_divide:Div0" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHN" = "24"
@@ -592,18 +615,30 @@ Info (12133): Instantiated megafunction "vga_frame:comb_5|lpm_divide:Mod0" with 
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_9bm.tdf
     Info (12023): Found entity 1: lpm_divide_9bm
+Info (12130): Elaborated megafunction instantiation "vga_frame:comb_5|lpm_divide:Mod1"
+Info (12133): Instantiated megafunction "vga_frame:comb_5|lpm_divide:Mod1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "11"
+    Info (12134): Parameter "LPM_WIDTHD" = "2"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_l9m.tdf
+    Info (12023): Found entity 1: lpm_divide_l9m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_jlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_jlh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_h5f.tdf
+    Info (12023): Found entity 1: alt_u_div_h5f
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 946 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1044 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 14 output pins
-    Info (21061): Implemented 930 logic cells
+    Info (21061): Implemented 1028 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 628 megabytes
-    Info: Processing ended: Mon Jun  1 15:49:18 2015
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 632 megabytes
+    Info: Processing ended: Mon Jun  1 17:29:06 2015
     Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:19
 

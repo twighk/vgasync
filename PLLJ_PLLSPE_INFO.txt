@@ -1,4 +1,4 @@
-PLL_Name	qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_h542:sd1|pll7
+PLL_Name	qsyssystem:comb_4|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_5q42:sd1|pll7
 PLLJITTER	31
 PLLSPEmax	84
 PLLSPEmin	-53
