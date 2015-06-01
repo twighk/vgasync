@@ -1,0 +1,80 @@
+module vgasync(input CLOCK_50, output [0:0] VGA_VS, output [0:0] VGA_HS, output [3:0] VGA_R, output [3:0] VGA_G, output [3:0] VGA_B);
+
+	wire CLOCK_500;
+	wire reset; assign reset = 1;
+
+	qsyssystem(reset, CLOCK_500, CLOCK_50);
+	vga_frame(CLOCK_500, VGA_VS[0:0], VGA_HS[0:0], VGA_R[3:0], VGA_G[3:0], VGA_B[3:0]);
+
+endmodule
+
+module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, output reg[3:0] VGA_R, output reg [3:0] VGA_G, output reg [3:0] VGA_B);
+
+	parameter clock_freq = 65000000;//;166924800; // Hz
+	
+	
+// http://www.epanorama.net/faq/vga2rgb/calc.html
+	parameter H_DISP   = 1024;
+	parameter H_FPORCH = 24;
+	parameter H_SYNC   = 136;
+	parameter H_BPORCH = 160;
+	parameter V_DISP   = 768;
+	parameter V_FPORCH = 3;
+	parameter V_SYNC   = 6;
+	parameter V_BPORCH = 29;
+	
+	parameter refresh_rate = 60; // Hz
+	parameter line_per_frame = V_DISP+V_FPORCH+V_SYNC+V_BPORCH;//828; // Lines per Frame
+	parameter pixel_per_line = H_DISP+H_FPORCH+H_SYNC+H_BPORCH;//1680; // Pixels per Line
+	parameter clock_per_pixel = 1; // round(clock_freq/pixel_rate);
+	parameter pixel_per_frame = pixel_per_line*pixel_per_line; // Pixels
+
+	reg [23:0] clock_num = 0;
+	reg [0:0] bw = 0;
+
+	initial begin
+		VGA_VS[0] = 1;
+	end
+
+	always @(posedge clk) begin	
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_DISP + V_FPORCH
+		   && clock_num/ clock_per_pixel/ pixel_per_line <  V_DISP + V_FPORCH + V_SYNC 
+			) // VSync Pulse
+			begin
+				if (clock_num/ clock_per_pixel/ pixel_per_line == V_DISP + V_FPORCH)
+					bw[0] = ~bw[0];
+				VGA_VS[0] <= 0;
+			end
+		else begin
+			VGA_VS[0] <= 1; // possible wrong pulse polarity
+		end
+		
+		if (  clock_num/ clock_per_pixel% pixel_per_line >= H_DISP + H_FPORCH
+			&& clock_num/ clock_per_pixel% pixel_per_line <  H_DISP + H_FPORCH + H_SYNC
+			) // HSync Pulse
+			VGA_HS[0] <= 0;
+		else 
+			VGA_HS[0] <= 1; // possible wrong pulse polarity
+				
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= 0   
+			&& clock_num/ clock_per_pixel/ pixel_per_line <  V_DISP
+			&& clock_num/ clock_per_pixel% pixel_per_line >= 0
+			&& clock_num/ clock_per_pixel% pixel_per_line <  H_DISP
+			) // VH Visible area
+			begin
+			VGA_R[3:0] <= 4'b1111;
+			VGA_G[3:0] <= 4'b1111; 
+			VGA_B[3:0] <= 4'b1111;
+			end else begin
+			VGA_R[3:0] <= 0;
+			VGA_G[3:0] <= 0; 
+			VGA_B[3:0] <= 0;
+		end
+
+		if (clock_num / clock_per_pixel == pixel_per_frame) begin // reset clock at end of frame
+			clock_num = 0;
+		end else
+			clock_num = clock_num + 1;
+	end
+	
+endmodule

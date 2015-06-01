@@ -578,4 +578,10 @@ set_global_assignment -name QSYS_FILE qsyssystem.qsys
 set_global_assignment -name VERILOG_FILE qsyssystem/synthesis/qsyssystem.v
 set_global_assignment -name VERILOG_FILE vgasync.verilog
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name VECTOR_OUTPUT_FORMAT VWF
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE /home/twig/Scratch/vgasync/Waveform.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
