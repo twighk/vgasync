@@ -23,8 +23,8 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 	parameter V_BPORCH   =   38;
 	parameter V_SYNC_POL =   1;
 
-	parameter line_per_frame  = V_DISP+V_FPORCH+V_SYNC+V_BPORCH;//828; // Lines per Frame
-	parameter pixel_per_line  = H_DISP+H_FPORCH+H_SYNC+H_BPORCH;//1680; // Pixels per Line
+	parameter line_per_frame  = V_FPORCH+V_SYNC+V_BPORCH+V_DISP;//828; // Lines per Frame
+	parameter pixel_per_line  = H_FPORCH+H_SYNC+H_BPORCH+H_DISP;//1680; // Pixels per Line
 	parameter clock_per_pixel = 1; // round(clock_freq/pixel_rate);
 	parameter pixel_per_frame = line_per_frame*pixel_per_line; // Pixels
 	parameter white = 4'b1111;
@@ -38,11 +38,11 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 	end
 
 	always @(posedge clk) begin	
-		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_DISP + V_FPORCH
-		   && clock_num/ clock_per_pixel/ pixel_per_line <  V_DISP + V_FPORCH + V_SYNC 
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH
+		   && clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH+V_SYNC 
 			) // VSync Pulse
 			begin
-				if (clock_num/ clock_per_pixel/ pixel_per_line == V_DISP + V_FPORCH)
+				if (clock_num/ clock_per_pixel/ pixel_per_line == 0)
 					bw[0] = ~bw[0];
 				VGA_VS[0] = V_SYNC_POL;
 			end
@@ -53,8 +53,8 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 		
 		
 		
-		if (  clock_num/ clock_per_pixel% pixel_per_line >= H_DISP + H_FPORCH
-			&& clock_num/ clock_per_pixel% pixel_per_line <  H_DISP + H_FPORCH + H_SYNC
+		if (  clock_num/ clock_per_pixel% pixel_per_line >= H_FPORCH
+			&& clock_num/ clock_per_pixel% pixel_per_line <  H_FPORCH+H_SYNC
 			) // HSync Pulse
 			VGA_HS[0] = H_SYNC_POL;
 		else 
@@ -62,13 +62,13 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 				
 				
 				
-		if (  clock_num/ clock_per_pixel/ pixel_per_line >= 0   
-			&& clock_num/ clock_per_pixel/ pixel_per_line <  V_DISP
-			&& clock_num/ clock_per_pixel% pixel_per_line >= 0
-			&& clock_num/ clock_per_pixel% pixel_per_line <  H_DISP
+		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH+V_SYNC+V_BPORCH   
+			&& clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH+V_SYNC+V_BPORCH+V_DISP
+			&& clock_num/ clock_per_pixel% pixel_per_line >= H_FPORCH+H_SYNC+H_BPORCH
+			&& clock_num/ clock_per_pixel% pixel_per_line <  H_FPORCH+H_SYNC+H_BPORCH+H_DISP
 			) // VH Visible area
 			begin
-			VGA_R[3:0] = white;
+			VGA_R[3:0] = white;//bw[0]?black:
 			VGA_G[3:0] = white; 
 			VGA_B[3:0] = white;
 			end else begin
