@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="vgasync">
-		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_5|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_7jm.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_5|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_abm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_6|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_7jm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_6|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_abm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_6|lpm_divide:Mod1" CBX_FILE_NAME="lpm_divide_cbm.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

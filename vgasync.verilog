@@ -1,41 +1,17 @@
-module vgasync(input CLOCK_50, output [0:0] VGA_VS, output [0:0] VGA_HS, output [3:0] VGA_R, output [3:0] VGA_G, output [3:0] VGA_B);
+module vgasync(input CLOCK_50, input [29:29] GPIO_1, output [0:0] VGA_VS, output [0:0] VGA_HS, output [3:0] VGA_R, output [3:0] VGA_G, output [3:0] VGA_B);
 
-	wire CLOCK_500;
+	wire clk;
 	wire reset; assign reset = 1;
+	wire hsync = GPIO_1[29];
 
-	qsyssystem(reset, CLOCK_500, CLOCK_50);
-	vga_frame(CLOCK_500, VGA_VS[0:0], VGA_HS[0:0], VGA_R[3:0], VGA_G[3:0], VGA_B[3:0]);
+	qsyssystem(reset, CLOCK_50, clk);
+	vga_frame(clk, hsync, VGA_VS[0:0], VGA_HS[0:0], VGA_R[3:0], VGA_G[3:0], VGA_B[3:0]);
 
 endmodule
 
-module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, output reg[3:0] VGA_R, output reg [3:0] VGA_G, output reg [3:0] VGA_B);
-
+module vga_frame(input clk, input hsync, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, output reg[3:0] VGA_R, output reg [3:0] VGA_G, output reg [3:0] VGA_B);
 // http://www.epanorama.net/faq/vga2rgb/calc.html
-//	parameter PIXEL_CLK  =   108000;
-//	parameter H_DISP   	=   1280;
-//	parameter H_FPORCH   =   48; // 48
-//	parameter H_SYNC   	=   112;
-//	parameter H_BPORCH   =   248;// 248
-//	parameter H_SYNC_POL =   1;
-//	parameter V_DISP   	=   1024;
-//	parameter V_FPORCH   =   1;
-//	parameter V_SYNC   	=   3;
-//	parameter V_BPORCH   =   38;
-//	parameter V_SYNC_POL =   1;
-	
-//	parameter PIXEL_CLK  =   65000;
-//	parameter H_DISP   	=   1024;
-//	parameter H_FPORCH   =   24;
-//	parameter H_SYNC   	=   136;
-//	parameter H_BPORCH   =   160;
-//	parameter H_SYNC_POL =   0;
-//	parameter V_DISP   	=   768;
-//	parameter V_FPORCH   =   3;
-//	parameter V_SYNC   	=   6;
-//	parameter V_BPORCH   =   29;
-//	parameter V_SYNC_POL =   0;
-
-	parameter PIXEL_CLK  =   25170;
+	parameter PIXEL_CLK  =   25170; // Set to 25.200 MHz to match VGA output (xrandr cable unplugged)
 	parameter H_DISP   	=   640;
 	parameter H_FPORCH   =   16;
 	parameter H_SYNC   	=   96;
@@ -47,8 +23,6 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 	parameter V_BPORCH   =   31;
 	parameter V_SYNC_POL =   0;
 
-
-
 	parameter line_per_frame  = V_FPORCH+V_SYNC+V_BPORCH+V_DISP; // Lines per Frame
 	parameter pixel_per_line  = H_FPORCH+H_SYNC+H_BPORCH+H_DISP; // Pixels per Line
 	parameter clock_per_pixel = 1; // round(clock_freq/pixel_rate);
@@ -58,61 +32,80 @@ module vga_frame(input clk, output reg [0:0] VGA_VS, output reg [0:0] VGA_HS, ou
 
 	reg [23:0] clock_num = 0;
 	reg [3:0] bw = white;
+	
+	reg [0:0] fudge = 0;
+	reg [5:0] fudgefactor   = fudgebackward;
+	parameter fudgeforward  = 49;
+	parameter fudgebackward = 50;
+	/* fudgefactor number of pixels to match V_SYNC frequency with hsync frequency */
 
+	
 	initial begin
 		VGA_VS[0] = ~V_SYNC_POL;
 	end
+	
 
-	always @(posedge clk) begin	
+	always @(posedge clk)
+	begin	
+		
+//		if(hsync) // On Low hsync
+//		begin
+//			if (clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH)
+//				fudgefactor = fudgeforward;
+//			else
+//				fudgefactor = fudgebackward;
+//		end 
+//		else
+		begin
+			// VSync Pulse
+			if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH
+			   && clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH+V_SYNC
+			)
+				VGA_VS[0] <= V_SYNC_POL;
+			else
+				VGA_VS[0] <=~V_SYNC_POL;
 
-		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH
-		   && clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH+V_SYNC 
-			) // VSync Pulse
-			begin
-				VGA_VS[0] = V_SYNC_POL;
-			end
-		else 
-			begin
-				VGA_VS[0] =~V_SYNC_POL;
-			end
-		
-		
-		
-		if (  clock_num/ clock_per_pixel% pixel_per_line >= H_FPORCH
-			&& clock_num/ clock_per_pixel% pixel_per_line <  H_FPORCH+H_SYNC
-			) // HSync Pulse
-			begin
-				VGA_HS[0] = H_SYNC_POL;
-			end
-		else 
-			VGA_HS[0] =~H_SYNC_POL;
+
+			// HSync Pulse
+			if (clock_num/ clock_per_pixel% pixel_per_line == H_FPORCH)
+				VGA_HS[0] <= H_SYNC_POL;
+			if (clock_num/ clock_per_pixel% pixel_per_line == H_FPORCH+H_SYNC -1)
+				VGA_HS[0] <=~H_SYNC_POL;
 				
-				
-				
-		if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH+V_SYNC+V_BPORCH
-			&& clock_num/ clock_per_pixel/ pixel_per_line <  V_FPORCH+V_SYNC+V_BPORCH+V_DISP
-			&& clock_num/ clock_per_pixel% pixel_per_line >= H_FPORCH+H_SYNC+H_BPORCH
-			&& clock_num/ clock_per_pixel% pixel_per_line <  H_FPORCH+H_SYNC+H_BPORCH+H_DISP
-			) // VH Visible area
+			// VH Visible area	
+			if (  clock_num/ clock_per_pixel/ pixel_per_line >= V_FPORCH+V_SYNC+V_BPORCH
+				&& clock_num/ clock_per_pixel% pixel_per_line == H_FPORCH+H_SYNC+H_BPORCH
+				)
 			begin
-				VGA_R[3:0] = bw[3:0];//(clock_num% pixel_per_line%3==0)?white:black;
-				VGA_G[3:0] = bw[3:0];//(clock_num% pixel_per_line%3==1)?white:black; 
-				VGA_B[3:0] = bw[3:0];//(clock_num% pixel_per_line%3==2)?white:black;
+				VGA_R[3:0] <= bw[3:0];
+				VGA_G[3:0] <= bw[3:0]; 
+				VGA_B[3:0] <= bw[3:0];
 			end 
-		else 
+			if (  clock_num/ clock_per_pixel/ pixel_per_line <= V_FPORCH+V_SYNC+V_BPORCH+V_DISP -1
+				&& clock_num/ clock_per_pixel% pixel_per_line == H_FPORCH+H_SYNC+H_BPORCH+H_DISP -1
+				) 
 			begin
-				VGA_R[3:0] = black;
-				VGA_G[3:0] = black; 
-				VGA_B[3:0] = black;
+				VGA_R[3:0] <= black;
+				VGA_G[3:0] <= black; 
+				VGA_B[3:0] <= black;
 			end
 
-		if (clock_num / clock_per_pixel == pixel_per_frame) 
+//			if (clock_num/clock_per_pixel % (pixel_per_frame/50) == 0)
+//				if (fudge==0)
+//				begin
+//					clock_num = clock_num - 1;
+//					fudge <=1;
+//				end	
+//			else 
+//				fudge<=0;
+
+			if (clock_num / clock_per_pixel == pixel_per_frame) 
 			begin // reset clock at end of frame
 				clock_num = 0;
-				bw[3:0] = ~bw[3:0];
+				bw[3:0] <= ~bw[3:0];
 			end 
-		else
-			clock_num = clock_num + 1;
+			else
+				clock_num = clock_num + 1;
+		end
 	end
-	
 endmodule
