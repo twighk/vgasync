@@ -1,0 +1,338 @@
+--lpm_mult CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" DEVICE_FAMILY="Cyclone III" DSP_BLOCK_BALANCING="Auto" INPUT_A_IS_CONSTANT="NO" INPUT_B_IS_CONSTANT="YES" LPM_REPRESENTATION="UNSIGNED" LPM_WIDTHA=257 LPM_WIDTHB=4 LPM_WIDTHP=261 LPM_WIDTHS=1 MAXIMIZE_SPEED=5 dataa datab result CARRY_CHAIN="MANUAL" CARRY_CHAIN_LENGTH=48
+--VERSION_BEGIN 13.0 cbx_cycloneii 2013:06:12:18:03:33:SJ cbx_lpm_add_sub 2013:06:12:18:03:33:SJ cbx_lpm_mult 2013:06:12:18:03:33:SJ cbx_mgl 2013:06:12:18:33:59:SJ cbx_padd 2013:06:12:18:03:33:SJ cbx_stratix 2013:06:12:18:03:33:SJ cbx_stratixii 2013:06:12:18:03:33:SJ cbx_util_mgl 2013:06:12:18:03:33:SJ  VERSION_END
+
+
+-- Copyright (C) 1991-2013 Altera Corporation
+--  Your use of Altera Corporation's design tools, logic functions 
+--  and other software and tools, and its AMPP partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Altera Program License 
+--  Subscription Agreement, Altera MegaCore Function License 
+--  Agreement, or other applicable license agreement, including, 
+--  without limitation, that your use is for the sole purpose of 
+--  programming logic devices manufactured by Altera and sold by 
+--  Altera or its authorized distributors.  Please refer to the 
+--  applicable agreement for further details.
+
+
+FUNCTION cycloneiii_mac_mult (aclr, clk, dataa[dataa_width-1..0], datab[datab_width-1..0], ena, signa, signb)
+WITH ( dataa_clock, dataa_width, datab_clock, datab_width, signa_clock, signb_clock)
+RETURNS ( dataout[dataa_width+datab_width-1..0]);
+FUNCTION cycloneiii_mac_out (aclr, clk, dataa[dataa_width-1..0], ena)
+WITH ( dataa_width = 0, output_clock)
+RETURNS ( dataout[dataa_width-1..0]);
+FUNCTION soft (in)
+RETURNS ( out);
+
+--synthesis_resources = dsp_9bit 29 lut 244 
+SUBDESIGN mult_9ht
+( 
+	dataa[256..0]	:	input;
+	datab[3..0]	:	input;
+	result[260..0]	:	output;
+) 
+VARIABLE
+	add31_result[243..0]	:	WIRE;
+	mac_mult1 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult11 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult13 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult15 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult17 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult19 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult21 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult23 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult25 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult27 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult29 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 5,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult3 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult5 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult7 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_mult9 : cycloneiii_mac_mult
+		WITH (
+			dataa_clock = "none",
+			dataa_width = 18,
+			datab_clock = "none",
+			datab_width = 4,
+			signa_clock = "none",
+			signb_clock = "none"
+		);
+	mac_out10 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out12 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out14 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out16 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out18 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out2 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out20 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out22 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out24 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out26 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out28 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out30 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 9,
+			output_clock = "none"
+		);
+	mac_out4 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out6 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	mac_out8 : cycloneiii_mac_out
+		WITH (
+			dataa_width = 22,
+			output_clock = "none"
+		);
+	sft32a[243..0] : soft;
+	sft33a[243..0] : soft;
+	sft34a[243..0] : soft;
+	w1437w[261..0]	: WIRE;
+	w686w	: WIRE;
+
+BEGIN 
+	add31_result[] = sft32a[].out + sft33a[].out;
+	mac_mult1.dataa[] = ( dataa[17..0]);
+	mac_mult1.datab[] = ( datab[3..0]);
+	mac_mult1.signa = B"0";
+	mac_mult1.signb = B"0";
+	mac_mult11.dataa[] = ( dataa[107..90]);
+	mac_mult11.datab[] = ( datab[3..0]);
+	mac_mult11.signa = B"0";
+	mac_mult11.signb = B"0";
+	mac_mult13.dataa[] = ( dataa[125..108]);
+	mac_mult13.datab[] = ( datab[3..0]);
+	mac_mult13.signa = B"0";
+	mac_mult13.signb = B"0";
+	mac_mult15.dataa[] = ( dataa[143..126]);
+	mac_mult15.datab[] = ( datab[3..0]);
+	mac_mult15.signa = B"0";
+	mac_mult15.signb = B"0";
+	mac_mult17.dataa[] = ( dataa[161..144]);
+	mac_mult17.datab[] = ( datab[3..0]);
+	mac_mult17.signa = B"0";
+	mac_mult17.signb = B"0";
+	mac_mult19.dataa[] = ( dataa[179..162]);
+	mac_mult19.datab[] = ( datab[3..0]);
+	mac_mult19.signa = B"0";
+	mac_mult19.signb = B"0";
+	mac_mult21.dataa[] = ( dataa[197..180]);
+	mac_mult21.datab[] = ( datab[3..0]);
+	mac_mult21.signa = B"0";
+	mac_mult21.signb = B"0";
+	mac_mult23.dataa[] = ( dataa[215..198]);
+	mac_mult23.datab[] = ( datab[3..0]);
+	mac_mult23.signa = B"0";
+	mac_mult23.signb = B"0";
+	mac_mult25.dataa[] = ( dataa[233..216]);
+	mac_mult25.datab[] = ( datab[3..0]);
+	mac_mult25.signa = B"0";
+	mac_mult25.signb = B"0";
+	mac_mult27.dataa[] = ( dataa[251..234]);
+	mac_mult27.datab[] = ( datab[3..0]);
+	mac_mult27.signa = B"0";
+	mac_mult27.signb = B"0";
+	mac_mult29.dataa[] = ( dataa[256..252]);
+	mac_mult29.datab[] = ( datab[3..0]);
+	mac_mult29.signa = B"0";
+	mac_mult29.signb = B"0";
+	mac_mult3.dataa[] = ( dataa[35..18]);
+	mac_mult3.datab[] = ( datab[3..0]);
+	mac_mult3.signa = B"0";
+	mac_mult3.signb = B"0";
+	mac_mult5.dataa[] = ( dataa[53..36]);
+	mac_mult5.datab[] = ( datab[3..0]);
+	mac_mult5.signa = B"0";
+	mac_mult5.signb = B"0";
+	mac_mult7.dataa[] = ( dataa[71..54]);
+	mac_mult7.datab[] = ( datab[3..0]);
+	mac_mult7.signa = B"0";
+	mac_mult7.signb = B"0";
+	mac_mult9.dataa[] = ( dataa[89..72]);
+	mac_mult9.datab[] = ( datab[3..0]);
+	mac_mult9.signa = B"0";
+	mac_mult9.signb = B"0";
+	mac_out10.dataa[] = mac_mult9.dataout[];
+	mac_out12.dataa[] = mac_mult11.dataout[];
+	mac_out14.dataa[] = mac_mult13.dataout[];
+	mac_out16.dataa[] = mac_mult15.dataout[];
+	mac_out18.dataa[] = mac_mult17.dataout[];
+	mac_out2.dataa[] = mac_mult1.dataout[];
+	mac_out20.dataa[] = mac_mult19.dataout[];
+	mac_out22.dataa[] = mac_mult21.dataout[];
+	mac_out24.dataa[] = mac_mult23.dataout[];
+	mac_out26.dataa[] = mac_mult25.dataout[];
+	mac_out28.dataa[] = mac_mult27.dataout[];
+	mac_out30.dataa[] = mac_mult29.dataout[];
+	mac_out4.dataa[] = mac_mult3.dataout[];
+	mac_out6.dataa[] = mac_mult5.dataout[];
+	mac_out8.dataa[] = mac_mult7.dataout[];
+	sft32a[].in = ( w686w, ( mac_out30.dataout[8..8], ( mac_out30.dataout[7..7], ( mac_out30.dataout[6..6], ( mac_out30.dataout[5..5], ( mac_out30.dataout[4..4], ( mac_out28.dataout[21..21], ( mac_out28.dataout[20..20], ( mac_out28.dataout[19..19], ( mac_out28.dataout[18..18], ( mac_out28.dataout[17..17], ( mac_out28.dataout[16..16], ( mac_out28.dataout[15..15], ( mac_out28.dataout[14..14], ( mac_out28.dataout[13..13], ( mac_out28.dataout[12..12], ( mac_out28.dataout[11..11], ( mac_out28.dataout[10..10], ( mac_out28.dataout[9..9], ( mac_out28.dataout[8..8], ( mac_out28.dataout[7..7], ( mac_out28.dataout[6..6], ( mac_out28.dataout[5..5], ( mac_out28.dataout[4..4], ( mac_out26.dataout[21..21], ( mac_out26.dataout[20..20], ( mac_out26.dataout[19..19], ( mac_out26.dataout[18..18], ( mac_out26.dataout[17..17], ( mac_out26.dataout[16..16], ( mac_out26.dataout[15..15], ( mac_out26.dataout[14..14], ( mac_out26.dataout[13..13], ( mac_out26.dataout[12..12], ( mac_out26.dataout[11..11], ( mac_out26.dataout[10..10], ( mac_out26.dataout[9..9], ( mac_out26.dataout[8..8], ( mac_out26.dataout[7..7], ( mac_out26.dataout[6..6], ( mac_out26.dataout[5..5], ( mac_out26.dataout[4..4], ( mac_out24.dataout[21..21], ( mac_out24.dataout[20..20], ( mac_out24.dataout[19..19], ( mac_out24.dataout[18..18], ( mac_out24.dataout[17..17], ( mac_out24.dataout[16..16], ( mac_out24.dataout[15..15], ( mac_out24.dataout[14..14], ( mac_out24.dataout[13..13], ( mac_out24.dataout[12..12], ( mac_out24.dataout[11..11], ( mac_out24.dataout[10..10], ( mac_out24.dataout[9..9], ( mac_out24.dataout[8..8], ( mac_out24.dataout[7..7], ( mac_out24.dataout[6..6], ( mac_out24.dataout[5..5], ( mac_out24.dataout[4..4], ( mac_out22.dataout[21..21], ( mac_out22.dataout[20..20], ( mac_out22.dataout[19..19], ( mac_out22.dataout[18..18], ( mac_out22.dataout[17..17], ( mac_out22.dataout[16..16], ( mac_out22.dataout[15..15], ( mac_out22.dataout[14..14], ( mac_out22.dataout[13..13], ( mac_out22.dataout[12..12], ( mac_out22.dataout[11..11], ( mac_out22.dataout[10..10], ( mac_out22.dataout[9..9], ( mac_out22.dataout[8..8], ( mac_out22.dataout[7..7], ( mac_out22.dataout[6..6], ( mac_out22.dataout[5..5], ( mac_out22.dataout[4..4], ( mac_out20.dataout[21..21], ( mac_out20.dataout[20..20], ( mac_out20.dataout[19..19], ( mac_out20.dataout[18..18], ( mac_out20.dataout[17..17], ( mac_out20.dataout[16..16], ( mac_out20.dataout[15..15], ( mac_out20.dataout[14..14], ( mac_out20.dataout[13..13], ( mac_out20.dataout[12..12], ( mac_out20.dataout[11..11], ( mac_out20.dataout[10..10], ( mac_out20.dataout[9..9], ( mac_out20.dataout[8..8], ( mac_out20.dataout[7..7], ( mac_out20.dataout[6..6], ( mac_out20.dataout[5..5], ( mac_out20.dataout[4..4], ( mac_out18.dataout[21..21], ( mac_out18.dataout[20..20], ( mac_out18.dataout[19..19], ( mac_out18.dataout[18..18], ( mac_out18.dataout[17..17], ( mac_out18.dataout[16..16], ( mac_out18.dataout[15..15], ( mac_out18.dataout[14..14], ( mac_out18.dataout[13..13], ( mac_out18.dataout[12..12], ( mac_out18.dataout[11..11], ( mac_out18.dataout[10..10], ( mac_out18.dataout[9..9], ( mac_out18.dataout[8..8], ( mac_out18.dataout[7..7], ( mac_out18.dataout[6..6], ( mac_out18.dataout[5..5], ( mac_out18.dataout[4..4], ( mac_out16.dataout[21..21], ( mac_out16.dataout[20..20], ( mac_out16.dataout[19..19], ( mac_out16.dataout[18..18], ( mac_out16.dataout[17..17], ( mac_out16.dataout[16..16], ( mac_out16.dataout[15..15], ( mac_out16.dataout[14..14], ( mac_out16.dataout[13..13], ( mac_out16.dataout[12..12], ( mac_out16.dataout[11..11], ( mac_out16.dataout[10..10], ( mac_out16.dataout[9..9], ( mac_out16.dataout[8..8], ( mac_out16.dataout[7..7], ( mac_out16.dataout[6..6], ( mac_out16.dataout[5..5], ( mac_out16.dataout[4..4], ( mac_out14.dataout[21..21], ( mac_out14.dataout[20..20], ( mac_out14.dataout[19..19], ( mac_out14.dataout[18..18], ( mac_out14.dataout[17..17], ( mac_out14.dataout[16..16], ( mac_out14.dataout[15..15], ( mac_out14.dataout[14..14], ( mac_out14.dataout[13..13], ( mac_out14.dataout[12..12], ( mac_out14.dataout[11..11], ( mac_out14.dataout[10..10], ( mac_out14.dataout[9..9], ( mac_out14.dataout[8..8], ( mac_out14.dataout[7..7], ( mac_out14.dataout[6..6], ( mac_out14.dataout[5..5], ( mac_out14.dataout[4..4], ( mac_out12.dataout[21..21], ( mac_out12.dataout[20..20], ( mac_out12.dataout[19..19], ( mac_out12.dataout[18..18], ( mac_out12.dataout[17..17], ( mac_out12.dataout[16..16], ( mac_out12.dataout[15..15], ( mac_out12.dataout[14..14], ( mac_out12.dataout[13..13], ( mac_out12.dataout[12..12], ( mac_out12.dataout[11..11], ( mac_out12.dataout[10..10], ( mac_out12.dataout[9..9], ( mac_out12.dataout[8..8], ( mac_out12.dataout[7..7], ( mac_out12.dataout[6..6], ( mac_out12.dataout[5..5], ( mac_out12.dataout[4..4], ( mac_out10.dataout[21..21], ( mac_out10.dataout[20..20], ( mac_out10.dataout[19..19], ( mac_out10.dataout[18..18], ( mac_out10.dataout[17..17], ( mac_out10.dataout[16..16], ( mac_out10.dataout[15..15], ( mac_out10.dataout[14..14], ( mac_out10.dataout[13..13], ( mac_out10.dataout[12..12], ( mac_out10.dataout[11..11], ( mac_out10.dataout[10..10], ( mac_out10.dataout[9..9], ( mac_out10.dataout[8..8], ( mac_out10.dataout[7..7], ( mac_out10.dataout[6..6], ( mac_out10.dataout[5..5], ( mac_out10.dataout[4..4], ( mac_out8.dataout[21..21], ( mac_out8.dataout[20..20], ( mac_out8.dataout[19..19], ( mac_out8.dataout[18..18], ( mac_out8.dataout[17..17], ( mac_out8.dataout[16..16], ( mac_out8.dataout[15..15], ( mac_out8.dataout[14..14], ( mac_out8.dataout[13..13], ( mac_out8.dataout[12..12], ( mac_out8.dataout[11..11], ( mac_out8.dataout[10..10], ( mac_out8.dataout[9..9], ( mac_out8.dataout[8..8], ( mac_out8.dataout[7..7], ( mac_out8.dataout[6..6], ( mac_out8.dataout[5..5], ( mac_out8.dataout[4..4], ( mac_out6.dataout[21..21], ( mac_out6.dataout[20..20], ( mac_out6.dataout[19..19], ( mac_out6.dataout[18..18], ( mac_out6.dataout[17..17], ( mac_out6.dataout[16..16], ( mac_out6.dataout[15..15], ( mac_out6.dataout[14..14], ( mac_out6.dataout[13..13], ( mac_out6.dataout[12..12], ( mac_out6.dataout[11..11], ( mac_out6.dataout[10..10], ( mac_out6.dataout[9..9], ( mac_out6.dataout[8..8], ( mac_out6.dataout[7..7], ( mac_out6.dataout[6..6], ( mac_out6.dataout[5..5], ( mac_out6.dataout[4..4], ( mac_out4.dataout[21..21], ( mac_out4.dataout[20..20], ( mac_out4.dataout[19..19], ( mac_out4.dataout[18..18], ( mac_out4.dataout[17..17], ( mac_out4.dataout[16..16], ( mac_out4.dataout[15..15], ( mac_out4.dataout[14..14], ( mac_out4.dataout[13..13], ( mac_out4.dataout[12..12], ( mac_out4.dataout[11..11], ( mac_out4.dataout[10..10], ( mac_out4.dataout[9..9], ( mac_out4.dataout[8..8], ( mac_out4.dataout[7..7], ( mac_out4.dataout[6..6], ( mac_out4.dataout[5..5], ( mac_out4.dataout[4..4], ( mac_out2.dataout[21..21], ( mac_out2.dataout[20..20], ( mac_out2.dataout[19..18])))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+	sft33a[].in = ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out30.dataout[3..3], ( mac_out30.dataout[2..2], ( mac_out30.dataout[1..1], ( mac_out30.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out28.dataout[3..3], ( mac_out28.dataout[2..2], ( mac_out28.dataout[1..1], ( mac_out28.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out26.dataout[3..3], ( mac_out26.dataout[2..2], ( mac_out26.dataout[1..1], ( mac_out26.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out24.dataout[3..3], ( mac_out24.dataout[2..2], ( mac_out24.dataout[1..1], ( mac_out24.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out22.dataout[3..3], ( mac_out22.dataout[2..2], ( mac_out22.dataout[1..1], ( mac_out22.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out20.dataout[3..3], ( mac_out20.dataout[2..2], ( mac_out20.dataout[1..1], ( mac_out20.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out18.dataout[3..3], ( mac_out18.dataout[2..2], ( mac_out18.dataout[1..1], ( mac_out18.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out16.dataout[3..3], ( mac_out16.dataout[2..2], ( mac_out16.dataout[1..1], ( mac_out16.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out14.dataout[3..3], ( mac_out14.dataout[2..2], ( mac_out14.dataout[1..1], ( mac_out14.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out12.dataout[3..3], ( mac_out12.dataout[2..2], ( mac_out12.dataout[1..1], ( mac_out12.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out10.dataout[3..3], ( mac_out10.dataout[2..2], ( mac_out10.dataout[1..1], ( mac_out10.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out8.dataout[3..3], ( mac_out8.dataout[2..2], ( mac_out8.dataout[1..1], ( mac_out8.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out6.dataout[3..3], ( mac_out6.dataout[2..2], ( mac_out6.dataout[1..1], ( mac_out6.dataout[0..0], ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( w686w, ( mac_out4.dataout[3..3], ( mac_out4.dataout[2..2], ( mac_out4.dataout[1..0])))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))));
+	sft34a[].in = add31_result[];
+	result[260..0] = w1437w[260..0];
+	w1437w[] = ( sft34a[243..242].out, sft34a[241..240].out, sft34a[239..238].out, sft34a[237..236].out, sft34a[235..234].out, sft34a[233..232].out, sft34a[231..230].out, sft34a[229..228].out, sft34a[227..226].out, sft34a[225..224].out, sft34a[223..222].out, sft34a[221..220].out, sft34a[219..218].out, sft34a[217..216].out, sft34a[215..214].out, sft34a[213..212].out, sft34a[211..210].out, sft34a[209..208].out, sft34a[207..206].out, sft34a[205..204].out, sft34a[203..202].out, sft34a[201..200].out, sft34a[199..198].out, sft34a[197..196].out, sft34a[195..194].out, sft34a[193..192].out, sft34a[191..190].out, sft34a[189..188].out, sft34a[187..186].out, sft34a[185..184].out, sft34a[183..182].out, sft34a[181..180].out, sft34a[179..178].out, sft34a[177..176].out, sft34a[175..174].out, sft34a[173..172].out, sft34a[171..170].out, sft34a[169..168].out, sft34a[167..166].out, sft34a[165..164].out, sft34a[163..162].out, sft34a[161..160].out, sft34a[159..158].out, sft34a[157..156].out, sft34a[155..154].out, sft34a[153..152].out, sft34a[151..150].out, sft34a[149..148].out, sft34a[147..146].out, sft34a[145..144].out, sft34a[143..142].out, sft34a[141..140].out, sft34a[139..138].out, sft34a[137..136].out, sft34a[135..134].out, sft34a[133..132].out, sft34a[131..130].out, sft34a[129..128].out, sft34a[127..126].out, sft34a[125..124].out, sft34a[123..122].out, sft34a[121..120].out, sft34a[119..118].out, sft34a[117..116].out, sft34a[115..114].out, sft34a[113..112].out, sft34a[111..110].out, sft34a[109..108].out, sft34a[107..106].out, sft34a[105..104].out, sft34a[103..102].out, sft34a[101..100].out, sft34a[99..98].out, sft34a[97..96].out, sft34a[95..94].out, sft34a[93..92].out, sft34a[91..90].out, sft34a[89..88].out, sft34a[87..86].out, sft34a[85..84].out, sft34a[83..82].out, sft34a[81..80].out, sft34a[79..78].out, sft34a[77..76].out, sft34a[75..74].out, sft34a[73..72].out, sft34a[71..70].out, sft34a[69..68].out, sft34a[67..66].out, sft34a[65..64].out, sft34a[63..62].out, sft34a[61..60].out, sft34a[59..58].out, sft34a[57..56].out, sft34a[55..54].out, sft34a[53..52].out, sft34a[51..50].out, sft34a[49..48].out, sft34a[47..46].out, sft34a[45..44].out, sft34a[43..42].out, sft34a[41..40].out, sft34a[39..38].out, sft34a[37..36].out, sft34a[35..34].out, sft34a[33..32].out, sft34a[31..30].out, sft34a[29..28].out, sft34a[27..26].out, sft34a[25..24].out, sft34a[23..22].out, sft34a[21..20].out, sft34a[19..18].out, sft34a[17..16].out, sft34a[15..14].out, sft34a[13..12].out, sft34a[11..10].out, sft34a[9..8].out, sft34a[7..6].out, sft34a[5..4].out, sft34a[3..2].out, sft34a[1..0].out, mac_out2.dataout[17..17], mac_out2.dataout[16..16], mac_out2.dataout[15..15], mac_out2.dataout[14..14], mac_out2.dataout[13..13], mac_out2.dataout[12..12], mac_out2.dataout[11..11], mac_out2.dataout[10..10], mac_out2.dataout[9..9], mac_out2.dataout[8..8], mac_out2.dataout[7..7], mac_out2.dataout[6..6], mac_out2.dataout[5..5], mac_out2.dataout[4..4], mac_out2.dataout[3..3], mac_out2.dataout[2..2], mac_out2.dataout[1..1], mac_out2.dataout[0..0]);
+	w686w = B"0";
+END;
+--VALID FILE

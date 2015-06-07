@@ -1,5 +1,5 @@
 
-State Machine - |vgasync|vga_frame:comb_6|fudge
-Name fudge.1 
-fudge.0 0 
-fudge.1 1 
+State Machine - |vgasync|vga_frame:comb_6|f
+Name f.0 
+f.1 0 
+f.0 1 

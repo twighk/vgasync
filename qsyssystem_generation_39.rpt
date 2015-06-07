@@ -1,0 +1,47 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/home/twig/Scratch/vgasync/ --output-directory=/home/twig/Scratch/vgasync/qsyssystem/ --report-file=bsf:/home/twig/Scratch/vgasync/qsyssystem.bsf --system-info=DEVICE_FAMILY="Cyclone III" --system-info=DEVICE=EP3C16F484C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/twig/Scratch/vgasync/qsyssystem.qsys
+Progress: Loading vgasync/qsyssystem.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/home/twig/Scratch/vgasync/ --output-directory=/home/twig/Scratch/vgasync/qsyssystem/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/home/twig/Scratch/vgasync/qsyssystem.sopcinfo --report-file=html:/home/twig/Scratch/vgasync/qsyssystem.html --report-file=qip:/home/twig/Scratch/vgasync/qsyssystem/synthesis/qsyssystem.qip --report-file=cmp:/home/twig/Scratch/vgasync/qsyssystem.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone III" --system-info=DEVICE=EP3C16F484C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/twig/Scratch/vgasync/qsyssystem.qsys --language=VERILOG
+Progress: Loading vgasync/qsyssystem.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: qsyssystem: Generating qsyssystem "qsyssystem" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 2 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 2 modules, 2 connections
+Info: reset_adaptation_transform: After transform: 3 modules, 4 connections
+Info: merlin_mm_transform: After transform: 3 modules, 4 connections
+Info: altpll_0: "qsyssystem" instantiated altpll "altpll_0"
+Info: rst_controller: "qsyssystem" instantiated altera_reset_controller "rst_controller"
+Info: qsyssystem: Done qsyssystem" with 3 modules, 5 files, 24839 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
