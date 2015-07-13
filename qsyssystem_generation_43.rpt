@@ -1,0 +1,124 @@
+Info: Starting: Create simulation model
+Info: ip-generate --project-directory=/home/twig/Scratch/vgasync/ --output-directory=/home/twig/Scratch/vgasync/qsyssystem/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:/home/twig/Scratch/vgasync/qsyssystem.sopcinfo --report-file=html:/home/twig/Scratch/vgasync/qsyssystem.html --report-file=sip:/home/twig/Scratch/vgasync/qsyssystem/simulation/qsyssystem.sip --report-file=csv:/home/twig/Scratch/vgasync/qsyssystem.csv --report-file=spd:/home/twig/Scratch/vgasync/qsyssystem.spd --report-file=cmp:/home/twig/Scratch/vgasync/qsyssystem.cmp --system-info=DEVICE_FAMILY="Cyclone III" --system-info=DEVICE=EP3C16F484C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/twig/Scratch/vgasync/qsyssystem.qsys
+Progress: Loading vgasync/qsyssystem.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: qsyssystem: Generating qsyssystem "qsyssystem" for SIM_VERILOG
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 2 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 2 modules, 2 connections
+Info: reset_adaptation_transform: After transform: 3 modules, 4 connections
+Info: merlin_mm_transform: After transform: 3 modules, 4 connections
+Info: altpll_0: Error while generating qsyssystem_altpll_0.v : 1 : Error in generator - aborting
+ERROR : MGL_INTERNAL_ERROR: Port object altpll_avalon|altpll inst sd1|phasecounterselect of width  3 is being assigned the port altpll_avalon|w_phasectrsel of width 4 which is illegal, as port widths dont match nor are multiples. CAUSE : The port widths are mismatched in the mentioned assignment. The port widths of the connected ports should match or the LHS port width should be a multiple of the RHS port width. ACTION : Check the port widths of the connected ports. Logical operation results in a port width equal tERROR
+child process exited abnormally
+Info: altpll_0: Error in generator - aborting
+ERROR : MGL_INTERNAL_ERROR: Port object altpll_avalon|altpll inst sd1|phasecounterselect of width  3 is being assigned the port altpll_avalon|w_phasectrsel of width 4 which is illegal, as port widths dont match nor are multiples. CAUSE : The port widths are mismatched in the mentioned assignment. The port widths of the connected ports should match or the LHS port width should be a multiple of the RHS port width. ACTION : Check the port widths of the connected ports. Logical operation results in a port width equal tERROR
+child process exited abnormally
+    while executing
+"exec /opt/altera/quartus/linux/clearbox altpll_avalon device_family=CYCLONEIII CBX_FILE=qsyssystem_altpll_0.v -f cbxcmdln_1434027313204162"
+    ("eval" body line 1)
+    invoked from within
+"eval exec $cbx_cmd "
+Info: altpll_0: Generating Verilog simulation model
+Warning: Parallel compilation is not licensed and has been disabled
+Error: Verilog HDL error at qsyssystem_altpll_0.v(863): can't find port "phasecounterselect" File: /tmp/alt6597_4951888324658793114.dir/0003_sopcqmap/qsyssystem_altpll_0.v Line: 863
+Error: Can't elaborate top-level user hierarchy
+Warning: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
+Error:     Peak virtual memory: 535 megabytes
+Error:     Processing ended: Thu Jun 11 13:55:20 2015
+Error:     Elapsed time: 00:00:01
+Error:     Total CPU time (on all processors): 00:00:01
+Error: altpll_0: Simulation model generation failed
+Info: altpll_0: "qsyssystem" instantiated altpll "altpll_0"
+Error: Generation stopped, 1 or more modules remaining
+Info: qsyssystem: Done qsyssystem" with 3 modules, 1 files, 2637 bytes
+Error: ip-generate failed with exit code 1: 8 Errors, 6 Warnings
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=/home/twig/Scratch/vgasync/qsyssystem.spd --output-directory=/home/twig/Scratch/vgasync/qsyssystem/simulation/
+Info: Doing: ip-make-simscript --spd=/home/twig/Scratch/vgasync/qsyssystem.spd --output-directory=/home/twig/Scratch/vgasync/qsyssystem/simulation/
+Info: Generating the following file(s) for MODELSIM simulator in /home/twig/Scratch/vgasync/qsyssystem/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in /home/twig/Scratch/vgasync/qsyssystem/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in /home/twig/Scratch/vgasync/qsyssystem/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in /home/twig/Scratch/vgasync/qsyssystem/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: Generating the following file(s) for RIVIERAPRO simulator in /home/twig/Scratch/vgasync/qsyssystem/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/home/twig/Scratch/vgasync/ --output-directory=/home/twig/Scratch/vgasync/qsyssystem/ --report-file=bsf:/home/twig/Scratch/vgasync/qsyssystem.bsf --system-info=DEVICE_FAMILY="Cyclone III" --system-info=DEVICE=EP3C16F484C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/twig/Scratch/vgasync/qsyssystem.qsys
+Progress: Loading vgasync/qsyssystem.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=/home/twig/Scratch/vgasync/ --output-directory=/home/twig/Scratch/vgasync/qsyssystem/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/home/twig/Scratch/vgasync/qsyssystem.sopcinfo --report-file=html:/home/twig/Scratch/vgasync/qsyssystem.html --report-file=qip:/home/twig/Scratch/vgasync/qsyssystem/synthesis/qsyssystem.qip --report-file=cmp:/home/twig/Scratch/vgasync/qsyssystem.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone III" --system-info=DEVICE=EP3C16F484C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/twig/Scratch/vgasync/qsyssystem.qsys --language=VERILOG
+Progress: Loading vgasync/qsyssystem.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.0]
+Progress: Parameterizing module clk_0
+Progress: Adding altpll_0 [altpll 13.0]
+Progress: Parameterizing module altpll_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Warning: qsyssystem.altpll_0: altpll_0.pll_slave must be connected to an Avalon-MM master
+Warning: qsyssystem.altpll_0: altpll_0.areset_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.locked_conduit must be exported, or connected to a matching conduit.
+Warning: qsyssystem.altpll_0: altpll_0.phasedone_conduit must be exported, or connected to a matching conduit.
+Info: qsyssystem: Generating qsyssystem "qsyssystem" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 2 modules, 2 connections
+Info: No custom instruction connections, skipping transform 
+Info: No Avalon connections, skipping transform 
+Info: merlin_translator_transform: After transform: 2 modules, 2 connections
+Info: reset_adaptation_transform: After transform: 3 modules, 4 connections
+Info: merlin_mm_transform: After transform: 3 modules, 4 connections
+Info: altpll_0: Error while generating qsyssystem_altpll_0.v : 1 : Error in generator - aborting
+ERROR : MGL_INTERNAL_ERROR: Port object altpll_avalon|altpll inst sd1|phasecounterselect of width  3 is being assigned the port altpll_avalon|w_phasectrsel of width 4 which is illegal, as port widths dont match nor are multiples. CAUSE : The port widths are mismatched in the mentioned assignment. The port widths of the connected ports should match or the LHS port width should be a multiple of the RHS port width. ACTION : Check the port widths of the connected ports. Logical operation results in a port width equal tERROR
+child process exited abnormally
+Info: altpll_0: Error in generator - aborting
+ERROR : MGL_INTERNAL_ERROR: Port object altpll_avalon|altpll inst sd1|phasecounterselect of width  3 is being assigned the port altpll_avalon|w_phasectrsel of width 4 which is illegal, as port widths dont match nor are multiples. CAUSE : The port widths are mismatched in the mentioned assignment. The port widths of the connected ports should match or the LHS port width should be a multiple of the RHS port width. ACTION : Check the port widths of the connected ports. Logical operation results in a port width equal tERROR
+child process exited abnormally
+    while executing
+"exec /opt/altera/quartus/linux/clearbox altpll_avalon device_family=CYCLONEIII CBX_FILE=qsyssystem_altpll_0.v -f cbxcmdln_1434027322213902"
+    ("eval" body line 1)
+    invoked from within
+"eval exec $cbx_cmd "
+Info: altpll_0: "qsyssystem" instantiated altpll "altpll_0"
+Info: rst_controller: "qsyssystem" instantiated altera_reset_controller "rst_controller"
+Info: qsyssystem: Done qsyssystem" with 3 modules, 5 files, 50775 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

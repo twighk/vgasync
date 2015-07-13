@@ -1,0 +1,18 @@
+# system info qsyssystem on 2015.06.11.13:59:50
+system_info:
+name,value
+DEVICE,EP3C16F484C6
+DEVICE_FAMILY,Cyclone III
+GENERATION_ID,1434027583
+#
+#
+# Files generated for qsyssystem on 2015.06.11.13:59:50
+files:
+filepath,kind,attributes,module,is_top
+qsyssystem/simulation/qsyssystem.v,VERILOG,,qsyssystem,true
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+qsyssystem.altpll_0,qsyssystem_altpll_0
+qsyssystem.rst_controller,altera_reset_controller

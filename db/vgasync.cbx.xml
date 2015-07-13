@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="vgasync">
-		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_6|lpm_divide:Div0" CBX_FILE_NAME="lpm_divide_7jm.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|vga_frame:comb_6|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_abm.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|vgasync|altpllwdp:altpllwdp_inst|altpll:altpll_component" CBX_FILE_NAME="altpllwdp_altpll.v"/>
 	</PROJECT>
 </LOG_ROOT>

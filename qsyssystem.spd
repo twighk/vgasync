@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="qsyssystem/simulation/qsyssystem.v" type="VERILOG" />
+ <topLevel name="qsyssystem" />
+ <deviceFamily name="cycloneiii" />
+</simPackage>

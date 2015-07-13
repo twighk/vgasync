@@ -1,4 +1,4 @@
-PLL_Name	qsyssystem:comb_5|qsyssystem_altpll_0:altpll_0|qsyssystem_altpll_0_altpll_go42:sd1|pll7
+PLL_Name	altpllwdp:altpllwdp_inst|altpll:altpll_component|altpllwdp_altpll:auto_generated|pll1
 PLLJITTER	19
 PLLSPEmax	84
 PLLSPEmin	-53
